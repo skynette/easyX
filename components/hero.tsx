@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useInView, useAnimation } from "framer-motion"
+import "../styles/hero-animations.css"
 
 export default function HomeHeroSection() {
     const controls = useAnimation()
@@ -47,15 +48,34 @@ export default function HomeHeroSection() {
 
     return (
         <section ref={ref} className="relative py-20 md:py-28 overflow-hidden">
-            {/* Gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary/30 to-secondary/10 dark:from-secondary/20 dark:to-background">
+            {/* Modern gradient background with multiple layers */}
+            <div className="absolute inset-0 overflow-hidden">
+                {/* Base gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 via-background to-primary/10 dark:from-secondary/30 dark:via-background dark:to-primary/5"></div>
+
+                {/* Animated gradient blobs */}
+                <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl rounded-full opacity-40 dark:opacity-30 animate-blob"></div>
+                <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-secondary/20 to-primary/20 blur-3xl rounded-full opacity-40 dark:opacity-30 animate-blob animation-delay-2000"></div>
+                <div className="absolute top-1/2 left-1/4 w-1/3 h-1/3 bg-gradient-to-tr from-primary/10 to-secondary/30 blur-3xl rounded-full opacity-40 dark:opacity-30 animate-blob animation-delay-4000"></div>
+
+                {/* Dot patterns */}
                 <div
-                    className="absolute inset-0 opacity-30"
+                    className="absolute inset-0 opacity-30 dark:opacity-0"
+                    style={{
+                        backgroundImage: "radial-gradient(circle, rgba(0, 0, 0, 0.3) 1px, transparent 1px)",
+                        backgroundSize: "30px 30px",
+                    }}
+                ></div>
+                <div
+                    className="absolute inset-0 opacity-0 dark:opacity-30"
                     style={{
                         backgroundImage: "radial-gradient(circle, rgba(255, 255, 255, 0.8) 1px, transparent 1px)",
                         backgroundSize: "30px 30px",
                     }}
                 ></div>
+
+                {/* Subtle mesh gradient overlay */}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-secondary/5 dark:from-primary/10 dark:to-secondary/10 opacity-60"></div>
             </div>
 
             <div className="container mx-auto px-4 max-w-7xl relative z-10">
@@ -104,7 +124,7 @@ export default function HomeHeroSection() {
                             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                 <Link href="#" className="hover:opacity-90 transition-opacity">
                                     <Image
-                                        src="/placeholder.svg?height=50&width=170"
+                                        src="/google-play.png"
                                         alt="Get it on Google Play"
                                         width={170}
                                         height={50}
@@ -116,7 +136,7 @@ export default function HomeHeroSection() {
                             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                 <Link href="#" className="hover:opacity-90 transition-opacity">
                                     <Image
-                                        src="/placeholder.svg?height=50&width=170"
+                                        src="/apple-store.png"
                                         alt="Download on the App Store"
                                         width={170}
                                         height={50}
