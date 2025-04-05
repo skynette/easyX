@@ -58,3 +58,7 @@
     --chart-5: 33 15% 85%; /* Light tan */
   }
 }
+/* 
+html {
+  scroll-behavior: smooth;
+} */

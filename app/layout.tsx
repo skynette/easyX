@@ -4,6 +4,7 @@ import "./globals.css"
 import "react-toastify/dist/ReactToastify.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Montserrat } from "next/font/google"
+import ClientProviders from "@/components/client-providers"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -24,7 +25,11 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`antialiased ${montserrat.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <div className="min-h-screen flex flex-col">{children}</div>
+          <div className="min-h-screen flex flex-col">
+            <ClientProviders>
+              {children}
+            </ClientProviders>
+          </div>
         </ThemeProvider>
       </body>
     </html>
