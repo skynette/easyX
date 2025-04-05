@@ -36,10 +36,10 @@ export default function Footer() {
                     <div>
                         <h3 className="text-xl font-bold mb-6">Company</h3>
                         <ul className="space-y-3">
-                            <FooterLink>About Us</FooterLink>
-                            <FooterLink>Privacy Policy</FooterLink>
-                            <FooterLink>Terms & Conditions</FooterLink>
-                            <FooterLink>Contact Us</FooterLink>
+                            <FooterLink href="/about">About Us</FooterLink>
+                            <FooterLink href="/privacy">Privacy Policy</FooterLink>
+                            <FooterLink href="/terms">Terms & Conditions</FooterLink>
+                            <FooterLink href="/#contact">Contact Us</FooterLink>
                             <FooterLink>Delete Account</FooterLink>
                         </ul>
                     </div>
@@ -66,10 +66,10 @@ export default function Footer() {
                 {/* Bottom Bar */}
                 <div className="border-t border-muted mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
                     <div className="flex space-x-6 mb-4 md:mb-0">
-                        <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                        <Link href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                             Privacy policy
                         </Link>
-                        <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                        <Link href="terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                             Terms of use
                         </Link>
                     </div>
@@ -80,10 +80,10 @@ export default function Footer() {
     )
 }
 
-function FooterLink({ children }: { children: React.ReactNode }) {
+function FooterLink({ children, href = "#" }: { children: React.ReactNode, href?: string }) {
     return (
         <li>
-            <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link href={href} className="text-muted-foreground hover:text-foreground transition-colors">
                 {children}
             </Link>
         </li>
